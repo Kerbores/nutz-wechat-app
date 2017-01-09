@@ -1,8 +1,14 @@
 // pages/me/me.js
 Page({
-  data:{},
+  data:{
+    bind:false,
+    accesstoken:null,
+    user:null
+  },
   onLoad:function(options){
-    // 页面初始化 options为页面跳转所带来的参数
+    if(!this.data.bind){
+      this.reloadPage();
+    }
   },
   onReady:function(){
     // 页面渲染完成
@@ -15,5 +21,37 @@ Page({
   },
   onUnload:function(){
     // 页面关闭
+  },
+  reloadPage:function(){
+    wx.getStorage({
+      key: 'accesstoken',
+      success:(res)=>{
+        this.setData({
+          "accesstoken":res
+        });
+      }
+    })
+  },
+  scan:function(){
+    var that = this;
+    wx.scanCode({
+      success:function(obj){
+        that.setData({
+          "accesstoken":obj.result,
+        });
+        wx.setStorage({
+          key:"accesstoken",
+          data:obj.result
+        });
+        that.reloadPage();
+      },
+      fail:function(){
+        wx.showToast({
+          title: '扫码失败',
+          icon: 'success',
+          duration: 1000
+        })
+      }
+    })
   }
 })

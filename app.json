@@ -2,7 +2,9 @@
   "pages":[
     "pages/topic/topic",
     "pages/new/new",
-    "pages/me/me"
+    "pages/me/me",
+    "pages/topics/detail/detail",
+    "pages/topics/reply/reply"
   ],
   "window":{
     "backgroundTextStyle":"light",
