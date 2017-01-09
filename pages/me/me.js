@@ -3,7 +3,8 @@ Page({
   data:{
     bind:false,
     accesstoken:null,
-    user:null
+    user:null,
+    loginname:null
   },
   onLoad:function(options){
     if(!this.data.bind){
@@ -27,7 +28,38 @@ Page({
       key: 'accesstoken',
       success:(res)=>{
         this.setData({
-          "accesstoken":res
+          "accesstoken":res.data,
+          "bind":true
+        });
+        //验证token
+        wx.request({
+          url: 'https://nutz.cn/yvr/api/v1/accesstoken',  
+          data: {
+            "accesstoken": this.data.accesstoken ,
+          },
+          success: (res)=>{
+            this.setData({
+              "loginname":res.data.loginname
+            });
+            //todo 获取用户信息
+            wx.request({
+              url: 'https://nutz.cn/yvr/api/v1/user/'+this.data.loginname,
+              success: (res)=>{
+                console.log(res.data.data);
+                this.setData({
+                  "user":res.data.data
+                });
+              }
+            });
+            //获取未读消息
+          },
+          fail:function(){//验证失败
+            wx.showToast({
+              title: '无效的二维码',
+              icon: 'success',
+              duration: 1000
+            })
+          }
         });
       }
     })
