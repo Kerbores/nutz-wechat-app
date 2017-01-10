@@ -4,7 +4,7 @@
       <image src="{{topic.author.avatar_url}}" class="weui-media-box__thumb"></image>
     </view>
     <view class="weui-media-box__bd">
-      <view class="weui-media-box__title">{{topic.title}}
+      <view class="weui-media-box__title" hover="true" hover-class="title_hover" bindtap="showDetail" data-id="{{topic.id}}">{{topic.title}}
         <image style="width: 15px; height: 15px; background-color: #eeeeee;" wx:if="{{topic.top}}" src="/image/icon/top.png" title="置顶"></image>
         <image style="width: 15px; height: 15px; background-color: #eeeeee;" wx:if="{{topic.good}}" src="/image/icon/good.png" title="精华"></image>
       </view>

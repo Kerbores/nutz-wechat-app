@@ -2820,3 +2820,7 @@ input[type="search"]::-webkit-search-results-decoration {
     text-align: center;
     font-size: 14px;
 }
+.title_hover{
+    cursor: pointer;
+    color: #10AEFF
+}

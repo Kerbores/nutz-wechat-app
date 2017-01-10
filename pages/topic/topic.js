@@ -6,7 +6,7 @@ Page({
 
   },
   onLoad:function(options){
-    this.loadTopicss();
+    this.loadTopics();
   },
   onReady:function(){
     // 页面渲染完成
@@ -24,9 +24,14 @@ Page({
     this.setData({
       "page":this.data.page + 1
     });
-    this.loadTopicss();
+    this.loadTopics();
   },
-  loadTopicss:function(){
+  showDetail:function(event){
+    wx.navigateTo({
+      url: '../topics/detail/detail?id=' + event.target.dataset.id
+    })
+  },
+  loadTopics:function(){
     var that = this;
     var old = this.data.topics;
     // 页面初始化 options为页面跳转所带来的参数
