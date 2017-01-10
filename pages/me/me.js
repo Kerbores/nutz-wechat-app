@@ -23,6 +23,11 @@ Page({
   onUnload:function(){
     // 页面关闭
   },
+  showDetail:function(event){
+    wx.navigateTo({
+      url: '../topics/detail/detail?id=' + event.target.dataset.id
+    })
+  },
   reloadPage:function(){
     wx.getStorage({
       key: 'accesstoken',

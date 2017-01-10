@@ -31,4 +31,19 @@
     </view>
   </view>
 </view>
+<view wx:if="{{accesstoken != null}}" class="page-footer">
+  <view wx:if="{{showReplyView}}" class="reply_area">
+    <view class="weui-cell">
+      <view class="weui-cell__bd">
+        <textarea auto-height class="weui-input" placeholder="请输入帖子标题" bindblur="feedBackInput" bindinput="feedBackInput" bindconfirm="feedBackInput" />
+      </view>
+      <view class="weui-cell__hd">
+        <view class="weui-label">
+          <button class="weui-btn weui-btn_mini weui-btn_primary" bindtap="reply">回复</button>
+        </view>
+      </view>
+    </view>
+  </view>
+  <image wx:else style="width: 35px; height: 35px;float:right;margin-right:15px" src="/image/icon/reply.png" bindtap="showReplyView"></image>
+</view>
 <view class="weui-footer">2017 © NUTZ.CN</view>
