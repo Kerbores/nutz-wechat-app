@@ -3,8 +3,7 @@
         "pages/topic/topic",
         "pages/new/new",
         "pages/me/me",
-        "pages/topics/detail/detail",
-        "pages/topics/reply/reply"
+        "pages/topics/detail/detail"
     ],
     "window": {
         "backgroundTextStyle": "light",

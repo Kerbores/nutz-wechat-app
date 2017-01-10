@@ -20,15 +20,14 @@ Page({
         icon: 'loading',
         duration: 2000
       })
-      console.log(this.data.accesstoken)
       wx.request({
-        url: 'https://nutz.cn/yvr/api/v1/topic/'+this.data.topic.id+'/replies', 
+        url: 'https://nutz.cn/yvr/api/v1/topic/'+this.data.id+'/replies', 
         method:"POST",
         header: {
             'content-type': 'application/x-www-form-urlencoded'
         },
         data: {
-          id: this.data.topic.id ,
+          id: this.data.id ,
           content: this.data.reply,
           accesstoken:this.data.accesstoken
         },
@@ -36,7 +35,7 @@ Page({
           wx.hideToast();
           if(res.data.success){
             wx.redirectTo({
-              url: './detail?id='+this.data.topic.id
+              url: './detail?id='+this.data.id
             })
           }else{
             wx.showToast({

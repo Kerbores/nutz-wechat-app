@@ -10,6 +10,9 @@
           <view class="weui-media-box__title">{{user.loginname}}</view>
           <view class="weui-media-box__desc topic-summary">注册时间:{{user.create_at_forread}}</view>
           <view class="weui-media-box__desc topic-summary">积分:{{user.score}}</view>
+           <view class="weui-media-box__desc topic-summary">
+            <button  class="weui-btn weui-btn_mini weui-btn_warn" bindtap="logout">退出登录</button>
+           </view>
         </view>
       </view>
     </view>
